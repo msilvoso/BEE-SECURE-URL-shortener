@@ -1,0 +1,7 @@
+Options -Indexes FollowSymLinks MultiViews
+AuthType Digest
+AuthName "urlshortener"
+AuthDigestDomain /shorten/
+AuthDigestProvider file
+AuthUserFile /usr/local/etc/yourhtdigestfile
+Require valid-user

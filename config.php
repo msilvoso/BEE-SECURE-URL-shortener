@@ -1,38 +1,50 @@
 <?php
 /*
- * First authored by Brian Cray
- * License: http://creativecommons.org/licenses/by/3.0/
- * Contact the author at http://briancray.com/
+ * Copyright 2013 Manuel Silvoso
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
  */
 
-// db options
-define('DB_NAME', 'your db name');
-define('DB_USER', 'your db usernae');
-define('DB_PASSWORD', 'your db password');
+// db
+define('DB_ENGINE', 'mysql');
+define('DB_NAME', 'urlshortener');
+define('DB_USER', 'urlshortener');
+define('DB_PASSWORD', 'urlshortener');
 define('DB_HOST', 'localhost');
-define('DB_TABLE', 'shortenedurls');
 
-// connect to database
-mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
-mysql_select_db(DB_NAME);
+// webroot
+define('WEBROOT', 'http://' . $_SERVER['HTTP_HOST'] . '/');
 
-// base location of script (include trailing slash)
-define('BASE_HREF', 'http://' . $_SERVER['HTTP_HOST'] . '/');
-
-// change to limit short url creation to a single IP
-define('LIMIT_TO_IP', $_SERVER['REMOTE_ADDR']);
-
-// change to TRUE to start tracking referrals
-define('TRACK', FALSE);
+// approot
+define('APPROOT', dirname(__FILE__) . '/');
 
 // check if URL exists first
 define('CHECK_URL', FALSE);
 
-// change the shortened URL allowed characters
-define('ALLOWED_CHARS', '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+// allowed chars for the short url
+define('ALLOWED_CHARS','0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
-// do you want to cache?
-define('CACHE', TRUE);
+// redirect header
+define('REDIRECT_HEADER', 'HTTP/1.1 301 Moved Permanently');
+//define('REDIRECT_HEADER', 'HTTP/1.1 302 Moved Temporarily');
 
-// if so, where will the cache files be stored? (include trailing slash)
-define('CACHE_DIR', dirname(__FILE__) . '/cache/');
+// default web page to redirect to (if no valid code has been given)
+define('DEFAULT_SITE','https://www.bee-secure.lu/');
+
+// autoload
+function __autoload($class_name) 
+{
+       require	APPROOT . 'lib/' .  $class_name . '.php';
+}
