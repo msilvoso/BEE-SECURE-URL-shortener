@@ -68,7 +68,7 @@ $urls=dbUrls::getInstance();
 // a short URL has been entered
 if (!empty($short_url))
 {
-	if (!preg_match('/^['.ALLOWED_CHARS.']+$/',$short_url))
+	if (!preg_match('/^['.str_replace('-','\-',ALLOWED_CHARS).']+$/',$short_url))
 	{
 		die('ERROR: Please use only following characters: '.ALLOWED_CHARS);
 	}
