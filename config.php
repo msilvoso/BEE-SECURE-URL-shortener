@@ -34,7 +34,7 @@ define('APPROOT', dirname(__FILE__) . '/');
 define('CHECK_URL', FALSE);
 
 // allowed chars for the short url
-define('ALLOWED_CHARS','0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+define('ALLOWED_CHARS','0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_');
 
 // redirect header
 define('REDIRECT_HEADER', 'HTTP/1.1 301 Moved Permanently');
