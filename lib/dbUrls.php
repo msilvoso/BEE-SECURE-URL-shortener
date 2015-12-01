@@ -72,4 +72,16 @@ class dbUrls extends db
 		}
 		return $out;
 	}
+
+	public function getColumnHeaders()
+	{
+		$sql = 'DESC urls';
+		return $this->getAll($sql, array(), 0);
+	}
+
+	public function getUrls()
+	{
+		$sql = 'SELECT * FROM urls';
+		return $this->getAll($sql, array());
+	}
 }

@@ -67,6 +67,25 @@ abstract class db
                 return false;
 	}
 
+	public function getAll($sql, $params, $column = false)
+	{
+		$stmt=$this->getDB()->prepare($sql);
+                $all = false;
+		if ($stmt->execute($params))
+                {
+			if (false===$column)
+			{
+				$all = $stmt->fetchAll();
+			}
+			else
+			{
+				$all = $stmt->fetchAll(PDO::FETCH_COLUMN, (int)$column);
+			}
+                }
+                $stmt->closeCursor();
+                return $all;
+	}
+
 	public function execute($sql,$params)
 	{
 		$stmt=$this->getDB()->prepare($sql);

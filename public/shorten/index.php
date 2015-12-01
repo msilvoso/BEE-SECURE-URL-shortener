@@ -4,6 +4,7 @@
 	<meta name="robots" content="noindex, nofollow">
 </html>
 <body>
+	<a href="export.php">Export database in CSV format</a>
 	<form method="post" action="shorten.php" id="shortener">
 		<label for="longurl">URL to shorten</label> <input type="text" size="100" name="longurl" id="longurl"><br/> 
 		<label for="shorturl">Desired short url domain/something or empty</label> <input type="text" name="shorturl" id="shorturl"><br/>
